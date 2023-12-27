@@ -2,9 +2,44 @@ import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import { convertToGraphFormat } from '../../util/parsingFunctions';
 
+/* 
+    Graph Component:
+
+    data: [Object]           // An array of objects that represents a CSV in object form, with each object representing a row of the csv. 
+
+    Example:
+
+    {company: 'Tim Hortons', stores: 4671, revenue: 3.16},
+    {company: 'Panera Bread', stores: 1880, revenue: 2.53}
+    {company: 'Costa Coffee', stores: 3080, revenue: 1.21}
+    
+    
+    xAxisLabel: String      // The string representing the key that should be used for xAxis data.
+    
+    Example:
+
+    "stores" or "revenue"
+
+
+    yAxisLabel: String      // The string representing the key that should be used for yAxis data.
+
+    Example:
+
+    "company"
+
+    sortingFunction: [Obj] => [Obj] // A function that takes an array and returns another sorted version of the array
+
+    Example:
+
+    (data) => data.sort((a, b) => b.yAxis - a.yAxis);
+
+*/
+
 const GraphComponent = ({ data, xAxisLabel, yAxisLabel, sortingFunction }) => {
     // Ref to the SVG element
     const svgRef = useRef();
+
+    console.log("Example,", data);
 
     useEffect(() => {
         // Clear previous chart content
