@@ -60,17 +60,3 @@ export function parseCSVForBarChart(csvFile, callback) {
       data: [[Object]] -> this is the data being transformed
     
 */
-
-
-export function convertToGraphFormat(xAxisLabel, yAxisLabel, data) {
-  const returnArray = [];
-
-  data.forEach(element => {
-    returnArray.push({
-      xAxis: element[xAxisLabel],
-      yAxis: element[yAxisLabel]
-    });
-  });
-
-  return returnArray;
-}
